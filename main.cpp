@@ -35,10 +35,60 @@ string obtenerDirectorioActual() {
 VDinamico<Especie*> getEspNComun(VDinamico<Especie>& vEspecies)
 {
     VDinamico<Especie*> vectorEspNComun;
-    cout<<"getEspNComun() FUNCIÓN SIN IMPLEMENTAR"<<endl;
+    for (int i = 0; i < vEspecies.gettLogico(); i++)
+    {
+        if (!vEspecies[i].getnombre_comun().empty())
+        {
+            vectorEspNComun.insertar(&vEspecies[i]);
+        }
+    }
     return vectorEspNComun;
 }
+void bubble_sort(VDinamico<Especie> &vectorCompleto)
+{
+    int n = vectorCompleto.gettLogico();
+    for (int i = 0; i < n - 1; ++i)
+    {
+        for (int j = 0; j < n - i - 1; ++j)
+        {
+            if (vectorCompleto[j].getcodigo_especie() > vectorCompleto[j + 1].getcodigo_especie())
+            {
+                // Intercambiar elementos
+                Especie temp = vectorCompleto[j];
+                vectorCompleto[j] = vectorCompleto[j + 1];
+                vectorCompleto[j + 1] = temp;
+            }
+        }
+    }
+}
 
+VDinamico<Especie *> buscarPorPrimeraPalabraCientifica(VDinamico<Especie> &vEspecies, const string &palabra)
+{
+    // Vector que guarda punteros a Especie
+    VDinamico<Especie *> resultado;
+
+    for (unsigned int i = 0; i < vEspecies.gettLogico(); ++i){
+        string nomCientifico = vEspecies[i].getnombre_cientifico();
+
+        string primeraPalabra;
+        int posEspacio = nomCientifico.find(' ');
+
+        if (posEspacio == -1){
+            // Si vale -1, es que no encontró ningún espacio
+            primeraPalabra = nomCientifico;
+        }
+        else{
+            // Si encontró espacio, recortamos hasta esa posición
+            primeraPalabra = nomCientifico.substr(0, posEspacio);
+        }
+
+        if (primeraPalabra == palabra){
+            // Guardamos la dirección de memoria usando '&'
+            resultado.insertar(&vEspecies[i]);
+        }
+    }
+    return resultado;
+}
 //CONSTANTES
 const string RUTA_FICHERO_ESPECIES = "data/arbolado-especies.csv";
 
@@ -65,14 +115,41 @@ int main()
             return 1;
         }
         cout << "Vector leido de fichero"<<endl;;
+        
+        //ORDENACIÓN DEL VECTOR POR CÓDIGO DE ESPECIE MEDIANTE BUBBLE SORT
+        bubble_sort(vectorCompleto);
+        // PRUEBA DE BÚSQUEDA POR PRIMERA PALABRA
+        cout << "===================================================" << endl;
+        string palabraBuscada = "Jasminum";
+        
+        // Llamada a la función
+        VDinamico especiesFiltradas = buscarPorPrimeraPalabraCientifica(vectorCompleto, palabraBuscada);
 
-        //Mostrar los 50 primeros identificadores
+        // A. Imprimimos el total devuelto (debe salir 6)
+        cout << "Numero de especies cuyo nombre cientifico empieza por '" 
+             << palabraBuscada << "': " << especiesFiltradas.gettLogico() << endl;
+
+        // B. Recorremos el vector de punteros para mostrarlas por pantalla
+        cout << "\nListado de especies encontradas:" << endl;
+        for (unsigned int i = 0; i < especiesFiltradas.gettLogico(); ++i) {
+            especiesFiltradas[i]->mostrarInfo(); 
+        }
+
+        
+        //Mostrar los 50 ultimos identificadores
+        cout<<"==================================================="<<endl;
+        cout << "Identificador de las ultimas 50 especies" << endl;
+        for (int i = vectorCompleto.gettLogico()-51; i < vectorCompleto.gettLogico() ; ++i)
+        {
+            cout<<to_string(i)<<": "<<vectorCompleto[i].getcodigo_especie()<<endl;
+        }
+         //Mostrar los 50 primeros identificadores
         cout<<"==================================================="<<endl;
         cout << "Identificador de las primeras 50 especies" << endl;
         for (int i = 0; i < 50; ++i)
         {
-            cout<<to_string(i)<<": "<<vectorCompleto[i].getcodigoEspecie()<<endl;
-        }
+            cout<<to_string(i)<<": "<<vectorCompleto[i].getcodigo_especie()<<endl;
+        } 
 
         //Ordenación del vector
         cout<<"==================================================="<<endl;
@@ -110,7 +187,10 @@ int main()
         for (int i = 0; i < vectorEspNComun.gettLogico(); i++)
         {
             vectorEspNComun[i]->mostrarInfo();
-        }
+        } 
+    } 
+    catch (const out_of_range& e) {
+    cerr << "Error de rango: " << e.what() << endl;
     }
     catch (const exception& e)
     {

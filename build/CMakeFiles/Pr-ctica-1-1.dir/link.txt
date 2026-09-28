@@ -1,1 +1,0 @@
-/usr/bin/c++ -g "CMakeFiles/Pr-ctica-1-1.dir/LectorCSV.cpp.o" "CMakeFiles/Pr-ctica-1-1.dir/main.cpp.o" -o Pr-ctica-1-1 
