@@ -1,14 +1,14 @@
 [
 {
-  "directory": "/home/administrador/CLionProjects/Pr-ctica-1-1/build",
-  "command": "/usr/bin/c++   -g -o CMakeFiles/Pr-ctica-1-1.dir/LectorCSV.cpp.o -c /home/administrador/CLionProjects/Pr-ctica-1-1/LectorCSV.cpp",
-  "file": "/home/administrador/CLionProjects/Pr-ctica-1-1/LectorCSV.cpp",
-  "output": "CMakeFiles/Pr-ctica-1-1.dir/LectorCSV.cpp.o"
+  "directory": "/home/matirex33/Clone/Pr-ctica-1/build",
+  "command": "/usr/bin/clang++ -g -o CMakeFiles/Pr-ctica-1-1.dir/LectorCSV.cpp.o -c /home/matirex33/Clone/Pr-ctica-1/LectorCSV.cpp",
+  "file": "/home/matirex33/Clone/Pr-ctica-1/LectorCSV.cpp",
+  "output": "/home/matirex33/Clone/Pr-ctica-1/build/CMakeFiles/Pr-ctica-1-1.dir/LectorCSV.cpp.o"
 },
 {
-  "directory": "/home/administrador/CLionProjects/Pr-ctica-1-1/build",
-  "command": "/usr/bin/c++   -g -o CMakeFiles/Pr-ctica-1-1.dir/main.cpp.o -c /home/administrador/CLionProjects/Pr-ctica-1-1/main.cpp",
-  "file": "/home/administrador/CLionProjects/Pr-ctica-1-1/main.cpp",
-  "output": "CMakeFiles/Pr-ctica-1-1.dir/main.cpp.o"
+  "directory": "/home/matirex33/Clone/Pr-ctica-1/build",
+  "command": "/usr/bin/clang++ -g -o CMakeFiles/Pr-ctica-1-1.dir/main.cpp.o -c /home/matirex33/Clone/Pr-ctica-1/main.cpp",
+  "file": "/home/matirex33/Clone/Pr-ctica-1/main.cpp",
+  "output": "/home/matirex33/Clone/Pr-ctica-1/build/CMakeFiles/Pr-ctica-1-1.dir/main.cpp.o"
 }
 ]

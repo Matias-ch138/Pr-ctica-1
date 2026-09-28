@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Site BuildName="Linux-c++"
+<Site BuildName="Linux-clang++"
 	BuildStamp="20260925-1110-Experimental"
-	Name="L6PC"
-	Generator="ctest-3.28.3"
-	CompilerName="/usr/bin/c++"
-	CompilerVersion="13.3.0"
+	Name="matirex33"
+	Generator="ctest-4.4.3"
+	CompilerName="/usr/bin/clang++"
+	CompilerVersion="22.1.8"
 	OSName="Linux"
-	Hostname="L6PC"
-	OSRelease="6.14.0-37-generic"
-	OSVersion="#37~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Thu Nov 20 10:25:38 UTC 2"
+	Hostname="matirex33"
+	OSRelease="7.2.6-arch2-1"
+	OSVersion="#1 SMP PREEMPT_DYNAMIC Mon, 14 Sep 2026 22:41:30 +0000"
 	OSPlatform="x86_64"
 	Is64Bits="1"
 	VendorString="GenuineIntel"
 	VendorID="Intel Corporation"
 	FamilyID="6"
 	ModelID="158"
-	ProcessorCacheSize="8192"
-	NumberOfLogicalCPU="8"
-	NumberOfPhysicalCPU="4"
-	TotalVirtualMemory="8191"
-	TotalPhysicalMemory="32053"
-	LogicalProcessorsPerPhysical="2"
-	ProcessorClockFrequency="4001.2"
+	ModelName="Intel(R) Core(TM) i5-8400 CPU @ 2.80GHz"
+	ProcessorCacheSize="9216"
+	NumberOfLogicalCPU="6"
+	NumberOfPhysicalCPU="6"
+	TotalVirtualMemory="4095"
+	TotalPhysicalMemory="15900"
+	LogicalProcessorsPerPhysical="1"
+	ProcessorClockFrequency="3799.979980"
 	>
 	<Testing>
-		<StartDateTime>Sep 25 13:10 CEST</StartDateTime>
-		<StartTestTime>1790334636</StartTestTime>
+		<StartDateTime>Sep 28 16:52 CEST</StartDateTime>
+		<StartTestTime>1790607176</StartTestTime>
 		<TestList/>
-		<EndDateTime>Sep 25 13:10 CEST</EndDateTime>
-		<EndTestTime>1790334636</EndTestTime>
+		<EndDateTime>Sep 28 16:52 CEST</EndDateTime>
+		<EndTestTime>1790607176</EndTestTime>
 		<ElapsedMinutes>0</ElapsedMinutes>
 	</Testing>
 </Site>

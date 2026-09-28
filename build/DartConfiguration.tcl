@@ -4,17 +4,17 @@
 
 
 # Configuration directories and files
-SourceDirectory: /home/administrador/CLionProjects/Pr-ctica-1-1
-BuildDirectory: /home/administrador/CLionProjects/Pr-ctica-1-1/build
+SourceDirectory: /home/matirex33/Clone/Pr-ctica-1
+BuildDirectory: /home/matirex33/Clone/Pr-ctica-1/build
 
 # Where to place the cost data store
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: L6PC
+Site: matirex33
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
-BuildName: Linux-c++
+BuildName: Linux-clang++
 
 # Subprojects
 LabelsForSubprojects: 
@@ -27,7 +27,7 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/home/administrador/CLionProjects/Pr-ctica-1-1"
+ConfigureCommand: "/usr/bin/cmake" "/home/matirex33/Clone/Pr-ctica-1"
 MakeCommand: /usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 
@@ -63,8 +63,8 @@ UpdateOptions:
 UpdateType: git
 
 # Compiler info
-Compiler: /usr/bin/c++
-CompilerVersion: 13.3.0
+Compiler: /usr/bin/clang++
+CompilerVersion: 22.1.8
 
 # Dynamic analysis (MemCheck)
 PurifyCommand: 
@@ -95,6 +95,9 @@ TimeOut: 1500
 # so would cause the system load to exceed this value.
 TestLoad: 
 
+TLSVerify: 
+TLSVersion: 
+
 UseLaunchers: 
 CurlOptions: 
 # warning, if you add new options here that have to do with submit,
@@ -104,3 +107,8 @@ CurlOptions:
 # specify behavior for retrying the submission
 CTestSubmitRetryDelay: 5
 CTestSubmitRetryCount: 3
+
+# Invoke each test with environment variables configuring tool's collection.
+CTestTestCoverageTool: 
+CTestTestCoverageMergeExecutable: 
+CTestTestCoverageDataExecutable: 

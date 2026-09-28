@@ -5,8 +5,8 @@ using namespace std;
 template <typename T>
 class VDinamico{
     private:
-    unasigned int tamlog_;
-    unasigned int tamfis_;
+    unsigned int tamlog_;
+    unsigned int tamfis_;
     T* datos_;
 
     void comprobarCapacidad(unsigned int capacidadNecesaria){
@@ -25,20 +25,20 @@ class VDinamico{
 
     public:
     VDinamico() : datos_(new T[1]), tamfis_(1),tamlog_(0) {}
-    VDinamico(const VDinamico<T>& origen, unsigned int posicioInicial,unsigned int numElementos){
-        T* nuevo=new T[1]
+    VDinamico(const VDinamico<T>& origen, unsigned int posicionInicial,unsigned int numElementos){
+        T* nuevo=new T[1];
         int auxTam=0;
         for(int i=posicionInicial;i<numElementos;i++){
             nuevo[auxTam]->insertar(origen[i]);
             auxTam++;
         }
     }
-    void insertar(const T& dato,unsigned int pos=dato.length()-1){
-        comprobarCapacidad(tamlog_)
-        for(unsigned int i =tamlog_; i > pos; i--){
+    void insertar(const T& dato){
+        comprobarCapacidad(tamlog_);
+        for(unsigned int i =tamlog_; i > dato.length()-1; i--){
             datos_[i] = datos_[i-1];
         }
-        datos_[pos]=dato;
+        datos_[dato.length()-1]=dato;
         tamlog_++;
     }
 };
