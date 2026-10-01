@@ -16,6 +16,10 @@ private:
     T* datos_;
 
     // Método auxiliar para redimensionar el vector garantizando potencia de 2
+    /**
+     * @brief Método auxiliar para redimensionar el vector garantizado potencia de 2
+     * @param capacidadNecesaria es la capacidad nueva que va a necesitar el vector
+     */
     void comprobarCapacidad(unsigned int capacidadNecesaria) {
         if (capacidadNecesaria <= tamfis_) {
             return;
@@ -32,6 +36,11 @@ private:
     }
 
     // Comprobación de límites para los operadores de acceso y borrado
+    /**
+     * @brief Comprobación de límites para los operadores de acceso y borrado
+     * @param pos la posición que queremos comprobar si esta dentro de los límites del vector
+     * @throw out_of_range si @param tamlog_ es igual a 0 o si @param pos es mayor o igual que @param tamlog_
+     */
     void comprobarPosicion(unsigned int pos) const {
         if (tamlog_ == 0) {
             throw out_of_range("[VDinamico::comprobarPosicion]: El vector esta vacio.");
@@ -43,9 +52,17 @@ private:
 
 public:
     // 1. Constructor por defecto
+    /**
+     * @brief Constructor por defecto
+     */
     VDinamico() : tamlog_(0), tamfis_(1), datos_(new T[1]) {}
 
     // 2. Constructor con tamaño y valor inicial
+    /**
+     * @brief constructor con tamaño y valor inicial
+     * @param tamlog tamaño lógico del vector
+     * @param dato el dato con el que queremos inicializar el vector
+     */
     VDinamico(unsigned int tamlog, const T& dato) : tamlog_(tamlog), tamfis_(1) {
         while (tamfis_ < tamlog_) {
             tamfis_ *= 2;
@@ -57,6 +74,10 @@ public:
     }
 
     // 3. Constructor de copia completa
+    /**
+     * @brief constructor de copia completa
+     * @param origen el objeto con el que queremos inicializar el nuevo objeto creado
+     */
     VDinamico(const VDinamico<T>& origen) 
         : tamlog_(origen.tamlog_), tamfis_(origen.tamfis_), datos_(new T[origen.tamfis_]) {
         for (unsigned int i = 0; i < origen.tamlog_; ++i) {
@@ -65,6 +86,12 @@ public:
     }
 
     // 4. Constructor de copia con rango (copia parcial)
+    /**
+     * @brief constructor de copia con rango o copia parcial
+     * @param origen el objeto con el que queremos inicializar el nuevo objeto desde una posición inicial 
+     * @param posicionInicial la posición desde donde empezamos a copiar en el nuevo objeto
+     * @param numElementos el numero de elementos que queremos que haya en el nuevo objeto
+     */
     VDinamico(const VDinamico<T>& origen, unsigned int posicionInicial, unsigned int numElementos) 
         : tamlog_(numElementos), tamfis_(1) {
         if (posicionInicial + numElementos > origen.tamlog_) {
@@ -80,11 +107,19 @@ public:
     }
 
     // 5. Destructor
+    /**
+     * @brief Destructor del objeto
+     */
     ~VDinamico() {
         delete[] datos_;
     }
 
     // 6. Operador de asignación (=)
+    /**
+     * @brief Operador de asignación
+     * @param origen el objeto el cuál queremos asignar
+     * @return el objeto que asignamos
+     */
     VDinamico<T>& operator=(const VDinamico<T>& origen) {
         if (this != &origen) {
             delete[] datos_;
@@ -99,17 +134,31 @@ public:
     }
 
     // 7. Operadores de acceso por índice con verificación de límites
+    /**
+     * @brief operador de acceso por índice escritura con verificación de límites
+     * @param pos posición del vector al que queremos acceder
+     * @return el dato que esta en es @param pos del vector
+     */
     T& operator[](unsigned int pos) {
         comprobarPosicion(pos);
         return datos_[pos];
     }
-
+    /**
+     * @brief operador de acceso por índice lectura con verificación de límites
+     * @param pos posición del vector al que queremos acceder
+     * @return el dato que esta en es @param pos del vector
+     */
     const T& operator[](unsigned int pos) const {
         comprobarPosicion(pos);
         return datos_[pos];
     }
 
     // 8. Insertar un elemento en una posición concreta
+    /**
+     * @brief Insertar un elemento en una posición concreta
+     * @param dato el dato que queremos insertar
+     * @param pos la posición en la que queremos insertar el @param dato
+     */
     void insertar(const T& dato, unsigned int pos = UINT_MAX) {
         if (pos != UINT_MAX && pos > tamlog_) {
             throw out_of_range("[VDinamico::insertar]: Posicion de insercion fuera de rango.");
@@ -129,6 +178,11 @@ public:
     }
 
     // 9. Eliminar un elemento en O(n)
+    /**
+     * @brief Eliminar un elemento
+     * @param pos posición en la que queremos eliminar el dato
+     * @return devuelve el dato borrado
+     */
     T borrar(unsigned int pos = UINT_MAX) {
         if (tamlog_ == 0) {
             throw out_of_range("[VDinamico::borrar]: No se puede borrar en un vector vacio.");
@@ -162,11 +216,19 @@ public:
     }
 
     // 10. Ordenar mediante std::sort
+    /**
+     * @brief ordena el vector mediante el sort()
+     */
     void ordenar() {
         sort(datos_, datos_ + tamlog_);
     }
 
     // 11. Búsqueda dicotómica
+    /**
+     * @brief Búsqueda dicotómica O(log n)
+     * @param dato el dato que queremos buscar en el vector
+     * @return -1 si @param tamlog_ es igual a 0 es decir esta vacio
+     */
     int busquedaDicotomica(const T& dato) const {
         if (tamlog_ == 0) return -1;
 
@@ -183,11 +245,19 @@ public:
                 fin = medio - 1;
             }
         }
-        return -1;
+        return 0;
     }
 
     // 12. Métodos para obtener el tamaño lógico
+    /**
+     * @brief obtención del tamaño lógico del vector
+     * @return @param tamlog_
+     */
     unsigned int tamlog() const { return tamlog_; }
+     /**
+      * @brief obtención del tamaño lógico del vector
+      * @return @param tamlog_
+      */
     unsigned int gettLogico() const { return tamlog_; }
 };
 

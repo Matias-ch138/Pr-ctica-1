@@ -1,3 +1,8 @@
+/**
+ * @author Matías Camacho Hoyo mch00039@red.ujaen.es
+ * @author 
+*/
+
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -44,6 +49,10 @@ VDinamico<Especie*> getEspNComun(VDinamico<Especie>& vEspecies)
     }
     return vectorEspNComun;
 }
+/**
+ * @brief bubble_sort para ordenar el vector
+ * @param vectorCompleto el vector de datos que queremos ordenar
+ */
 void bubble_sort(VDinamico<Especie> &vectorCompleto)
 {
     int n = vectorCompleto.gettLogico();
@@ -61,7 +70,12 @@ void bubble_sort(VDinamico<Especie> &vectorCompleto)
         }
     }
 }
-
+/**
+ * @brief buscar por la primera palabra del nombre cientifico de la especie
+ * @param vEspecies el vector de especie
+ * @param palabra la palabra que queremos buscar
+ * @return el vector con los datos filtrados
+ */
 VDinamico<Especie *> buscarPorPrimeraPalabraCientifica(VDinamico<Especie> &vEspecies, const string &palabra)
 {
     // Vector que guarda punteros a Especie
@@ -123,7 +137,7 @@ int main()
         string palabraBuscada = "Jasminum";
         
         // Llamada a la función
-        VDinamico especiesFiltradas = buscarPorPrimeraPalabraCientifica(vectorCompleto, palabraBuscada);
+        VDinamico<Especie*> especiesFiltradas = buscarPorPrimeraPalabraCientifica(vectorCompleto, palabraBuscada);
 
         // A. Imprimimos el total devuelto (debe salir 6)
         cout << "Numero de especies cuyo nombre cientifico empieza por '" 
