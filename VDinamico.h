@@ -15,7 +15,6 @@ private:
     unsigned int tamfis_;
     T* datos_;
 
-    // Método auxiliar para redimensionar el vector garantizando potencia de 2
     /**
      * @brief Método auxiliar para redimensionar el vector garantizado potencia de 2
      * @param capacidadNecesaria es la capacidad nueva que va a necesitar el vector
@@ -35,7 +34,7 @@ private:
         datos_ = newdatos;
     }
 
-    // Comprobación de límites para los operadores de acceso y borrado
+
     /**
      * @brief Comprobación de límites para los operadores de acceso y borrado
      * @param pos la posición que queremos comprobar si esta dentro de los límites del vector
@@ -57,7 +56,6 @@ public:
      */
     VDinamico() : tamlog_(0), tamfis_(1), datos_(new T[1]) {}
 
-    // 2. Constructor con tamaño y valor inicial
     /**
      * @brief constructor con tamaño y valor inicial
      * @param tamlog tamaño lógico del vector
@@ -73,7 +71,7 @@ public:
         }
     }
 
-    // 3. Constructor de copia completa
+
     /**
      * @brief constructor de copia completa
      * @param origen el objeto con el que queremos inicializar el nuevo objeto creado
@@ -85,7 +83,7 @@ public:
         }
     }
 
-    // 4. Constructor de copia con rango (copia parcial)
+
     /**
      * @brief constructor de copia con rango o copia parcial
      * @param origen el objeto con el que queremos inicializar el nuevo objeto desde una posición inicial 
@@ -107,7 +105,7 @@ public:
         }
     }
 
-    // 5. Destructor
+
     /**
      * @brief Destructor del objeto
      */
@@ -115,7 +113,7 @@ public:
         delete[] datos_;
     }
 
-    // 6. Operador de asignación (=)
+
     /**
      * @brief Operador de asignación
      * @param origen el objeto el cuál queremos asignar
@@ -134,7 +132,7 @@ public:
         return *this;
     }
 
-    // 7. Operadores de acceso por índice con verificación de límites
+
     /**
      * @brief operador de acceso por índice escritura con verificación de límites
      * @param pos posición del vector al que queremos acceder
@@ -154,7 +152,6 @@ public:
         return datos_[pos];
     }
 
-    // 8. Insertar un elemento en una posición concreta
     /**
      * @brief Insertar un elemento en una posición concreta
      * @param dato el dato que queremos insertar
@@ -179,7 +176,6 @@ public:
         tamlog_++;
     }
 
-    // 9. Eliminar un elemento en O(n)
     /**
      * @brief Eliminar un elemento
      * @param pos posición en la que queremos eliminar el dato
@@ -217,8 +213,6 @@ public:
 
         return elementoBorrado;
     }
-
-    // 10. Ordenar mediante std::sort
     /**
      * @brief ordena el vector mediante el sort()
      */
@@ -226,7 +220,6 @@ public:
         sort(datos_, datos_ + tamlog_);
     }
 
-    // 11. Búsqueda dicotómica
     /**
      * @brief Búsqueda dicotómica O(log n)
      * @param dato el dato que queremos buscar en el vector
@@ -251,7 +244,6 @@ public:
         return 0;
     }
 
-    // 12. Métodos para obtener el tamaño lógico
     /**
      * @brief obtención del tamaño lógico del vector
      * @return @param tamlog_
