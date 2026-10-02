@@ -1,0 +1,45 @@
+\doxysection{Especie.\+h}
+\hypertarget{_especie_8h_source}{}\label{_especie_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ESPECIE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ESPECIE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }Especie\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00012\ \textcolor{keywordtype}{string}\ codigoEspecie\_;}
+\DoxyCodeLine{00013\ \textcolor{keywordtype}{string}\ nombreComun\_;}
+\DoxyCodeLine{00014\ \textcolor{keywordtype}{string}\ nombreCientifico\_;}
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{string}\ tipoPlanta\_;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ Especie()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00019\ Especie(\textcolor{keywordtype}{string}\ codigoEspecie,\ \textcolor{keywordtype}{string}\ nombreComun,\ \textcolor{keywordtype}{string}\ nombreCientifico,\ \textcolor{keywordtype}{string}\ tipoPlanta)\{}
+\DoxyCodeLine{00020\ \ \ \ \ codigoEspecie\_\ =\ codigoEspecie;}
+\DoxyCodeLine{00021\ \ \ \ \ nombreComun\_\ =\ nombreComun;}
+\DoxyCodeLine{00022\ \ \ \ \ nombreCientifico\_\ =\ nombreCientifico;}
+\DoxyCodeLine{00023\ \ \ \ \ tipoPlanta\_\ =\ tipoPlanta;}
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ \textcolor{comment}{//Getters\ and\ setters}}
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{string}\ \doxymbox{\hyperlink{class_especie_a240c987cf0b19e98563b9ddf340a0f0c}{getcodigo\_especie}}()\textcolor{keyword}{const};}
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_especie_a2a42d4f6a598d2a84c89501dd1fe24a5}{set\_codigo\_especie}}(\textcolor{keywordtype}{string}\ codigoEspecie);}
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{string}\ \doxymbox{\hyperlink{class_especie_a32815b27fc5025eebce1fc720ae5b32d}{getnombre\_comun}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_especie_a2c5f5318011574ec9ef98ec640da3987}{setNombreComun}}(\textcolor{keywordtype}{string}\ nombreComun);}
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{string}\ \doxymbox{\hyperlink{class_especie_a62da4bb8ddd790f581a5186e1f79cc8d}{getnombre\_cientifico}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_especie_aa5bd21d0bad293712d6c0418519cc666}{setNombreCientifico}}(\textcolor{keywordtype}{string}\ nombreCientifico);}
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{string}\ \doxymbox{\hyperlink{class_especie_a0883777d0544f05120d5c36277eb4df0}{gettipo\_planta}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_especie_a992be0476e7d6345601bb8a5374bb11b}{setTipoPlanta}}(\textcolor{keywordtype}{string}\ tipoPlanta);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_especie_aa4375294d202f16263e8d6a845218ad0}{mostrarInfo}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_especie_a53a517dcd05021d86023ee6146a1a335}{operator<}}(\textcolor{keyword}{const}\ Especie\&\ origen)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_especie_a6ca725fe8235f46d06fdb3c73a0b392e}{operator==}}(\textcolor{keyword}{const}\ Especie\&\ origen)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

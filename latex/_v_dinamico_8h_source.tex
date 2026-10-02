@@ -1,0 +1,190 @@
+\doxysection{VDinamico.\+h}
+\hypertarget{_v_dinamico_8h_source}{}\label{_v_dinamico_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ VDINAMICO\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ VDINAMICO\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <climits>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_v_dinamico_af905a96dbf84b7a2e660b73b49e51e8d}{VDinamico}}\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ tamlog\_;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ tamfis\_;}
+\DoxyCodeLine{00016\ \ \ \ \ T*\ datos\_;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ comprobarCapacidad(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ capacidadNecesaria)\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (capacidadNecesaria\ <=\ tamfis\_)\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (tamfis\_\ <\ capacidadNecesaria)\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ tamfis\_\ *=\ 2;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ T*\ newdatos\ =\ \textcolor{keyword}{new}\ T[tamfis\_];}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ tamlog\_;\ ++i)\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ newdatos[i]\ =\ datos\_[i];}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ datos\_;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ datos\_\ =\ newdatos;}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ comprobarPosicion(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ pos)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tamlog\_\ ==\ 0)\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ out\_of\_range(\textcolor{stringliteral}{"{}[VDinamico::comprobarPosicion]:\ El\ vector\ esta\ vacio."{}});}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pos\ >=\ tamlog\_)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ out\_of\_range(\textcolor{stringliteral}{"{}[VDinamico::comprobarPosicion]:\ Posicion\ fuera\ de\ los\ limites\ del\ vector."{}});}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{//\ 1.\ Constructor\ por\ defecto}}
+\DoxyCodeLine{00057\ \ \ \ \ \doxymbox{\hyperlink{class_v_dinamico_af905a96dbf84b7a2e660b73b49e51e8d}{VDinamico}}()\ :\ tamlog\_(0),\ tamfis\_(1),\ datos\_(new\ T[1])\ \{\}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00064\ \ \ \ \ \doxymbox{\hyperlink{class_v_dinamico_aaa3f1d4207b82c69dab91fe8bd46dc43}{VDinamico}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_v_dinamico_a6116f41cab791ccfa3fd98c0d78274ec}{tamlog}},\ \textcolor{keyword}{const}\ T\&\ dato)\ :\ tamlog\_(\doxymbox{\hyperlink{class_v_dinamico_a6116f41cab791ccfa3fd98c0d78274ec}{tamlog}}),\ tamfis\_(1)\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (tamfis\_\ <\ tamlog\_)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ tamfis\_\ *=\ 2;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ datos\_\ =\ \textcolor{keyword}{new}\ T[tamfis\_];}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ tamlog\_;\ ++i)\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ datos\_[i]\ =\ dato;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00079\ \ \ \ \ \doxymbox{\hyperlink{class_v_dinamico_a8c581622f73ef34605227c3ac5547e24}{VDinamico}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_v_dinamico_af905a96dbf84b7a2e660b73b49e51e8d}{VDinamico<T>}}\&\ origen)\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ :\ tamlog\_(origen.tamlog\_),\ tamfis\_(origen.tamfis\_),\ datos\_(new\ T[origen.tamfis\_])\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ origen.tamlog\_;\ ++i)\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ datos\_[i]\ =\ origen.datos\_[i];}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00094\ \ \ \ \ \doxymbox{\hyperlink{class_v_dinamico_ad6a5558fb642b953013d5d79a4d941d9}{VDinamico}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_v_dinamico_af905a96dbf84b7a2e660b73b49e51e8d}{VDinamico<T>}}\&\ origen,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ posicionInicial,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ numElementos)\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ :\ tamlog\_(numElementos),\ tamfis\_(1)\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (posicionInicial\ +\ numElementos\ >\ origen.tamlog\_)\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ throw\ out\_of\_range(\textcolor{stringliteral}{"{}[VDinamico::VDinamico\ copia\ parcial]:\ El\ rango\ solicitado\ excede\ el\ tamano\ del\ vector\ origen."{}});}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ while\ (tamfis\_\ <\ tamlog\_)\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ tamfis\_\ *=\ 2;}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ datos\_\ =\ \textcolor{keyword}{new}\ T[tamfis\_];}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numElementos;\ ++i)\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ datos\_[i]\ =\ origen.datos\_[posicionInicial\ +\ i];}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00112\ \ \ \ \ \doxymbox{\hyperlink{class_v_dinamico_a811145b1f245e6dbda131423adee940f}{\string~VDinamico}}()\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ datos\_;}
+\DoxyCodeLine{00114\ \ \ \ \ \}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00122\ \ \ \ \ \doxymbox{\hyperlink{class_v_dinamico_af905a96dbf84b7a2e660b73b49e51e8d}{VDinamico<T>}}\&\ \doxymbox{\hyperlink{class_v_dinamico_ac67f38b2f607399806ade13687604249}{operator=}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_v_dinamico_af905a96dbf84b7a2e660b73b49e51e8d}{VDinamico<T>}}\&\ origen)\ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&origen)\ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ datos\_;}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ tamlog\_\ =\ origen.tamlog\_;}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ tamfis\_\ =\ origen.tamfis\_;}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ datos\_\ =\ \textcolor{keyword}{new}\ T[tamfis\_];}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ tamlog\_;\ ++i)\ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ datos\_[i]\ =\ origen.datos\_[i];}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00133\ \ \ \ \ \}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00141\ \ \ \ \ T\&\ \doxymbox{\hyperlink{class_v_dinamico_aa39178bbe1c016557023ba5a42e910f5}{operator[]}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ pos)\ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ comprobarPosicion(pos);}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ datos\_[pos];}
+\DoxyCodeLine{00144\ \ \ \ \ \}}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keyword}{const}\ T\&\ \doxymbox{\hyperlink{class_v_dinamico_ac2d28b248b4c5e64366509244b2fbd59}{operator[]}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ pos)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ comprobarPosicion(pos);}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ datos\_[pos];}
+\DoxyCodeLine{00153\ \ \ \ \ \}}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_v_dinamico_a439606ef0ea9abd0ab7836931f50c502}{insertar}}(\textcolor{keyword}{const}\ T\&\ dato,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ pos\ =\ UINT\_MAX)\ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pos\ !=\ UINT\_MAX\ \&\&\ pos\ >\ tamlog\_)\ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ out\_of\_range(\textcolor{stringliteral}{"{}[VDinamico::insertar]:\ Posicion\ de\ insercion\ fuera\ de\ rango."{}});}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pos\ ==\ UINT\_MAX)\ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ tamlog\_;}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ comprobarCapacidad(tamlog\_\ +\ 1);}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ tamlog\_;\ i\ >\ pos;\ -\/-\/i)\ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ datos\_[i]\ =\ datos\_[i\ -\/\ 1];}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ datos\_[pos]\ =\ dato;}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ tamlog\_++;}
+\DoxyCodeLine{00177\ \ \ \ \ \}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00185\ \ \ \ \ T\ \doxymbox{\hyperlink{class_v_dinamico_a44c4a73439f1e5f1275c5a43a93d3964}{borrar}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ pos\ =\ UINT\_MAX)\ \{}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tamlog\_\ ==\ 0)\ \{}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ out\_of\_range(\textcolor{stringliteral}{"{}[VDinamico::borrar]:\ No\ se\ puede\ borrar\ en\ un\ vector\ vacio."{}});}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pos\ ==\ UINT\_MAX)\ \{}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ tamlog\_\ -\/\ 1;}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (pos\ >=\ tamlog\_)\ \{}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ out\_of\_range(\textcolor{stringliteral}{"{}[VDinamico::borrar]:\ Posicion\ a\ borrar\ fuera\ de\ rango."{}});}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ T\ elementoBorrado\ =\ datos\_[pos];}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ pos;\ i\ <\ tamlog\_\ -\/\ 1;\ ++i)\ \{}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ datos\_[i]\ =\ datos\_[i\ +\ 1];}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ tamlog\_-\/-\/;}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Redimensionar\ a\ la\ mitad\ si\ la\ ocupación\ baja\ de\ un\ tercio\ (tamlog\_\ *\ 3\ <\ tamfis\_)}}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tamlog\_\ >\ 0\ \&\&\ tamlog\_\ *\ 3\ <\ tamfis\_)\ \{}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ tamfis\_\ /=\ 2;}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ T*\ newdatos\ =\ \textcolor{keyword}{new}\ T[tamfis\_];}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ tamlog\_;\ ++i)\ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ newdatos[i]\ =\ datos\_[i];}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ datos\_;}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ datos\_\ =\ newdatos;}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ elementoBorrado;}
+\DoxyCodeLine{00215\ \ \ \ \ \}}
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_v_dinamico_a54a20403d34e84dd29e48be289c4e31c}{ordenar}}()\ \{}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ sort(datos\_,\ datos\_\ +\ tamlog\_);}
+\DoxyCodeLine{00221\ \ \ \ \ \}}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_v_dinamico_aec2d54a2cf23ca4c815a3440c20deac8}{busquedaDicotomica}}(\textcolor{keyword}{const}\ T\&\ dato)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tamlog\_\ ==\ 0)\ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ inicio\ =\ 0;}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ fin\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(tamlog\_)\ -\/\ 1;}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (inicio\ <=\ fin)\ \{}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ medio\ =\ inicio\ +\ (fin\ -\/\ inicio)\ /\ 2;}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (datos\_[medio]\ ==\ dato)\ \{}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ medio;}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (datos\_[medio]\ <\ dato)\ \{}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inicio\ =\ medio\ +\ 1;}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fin\ =\ medio\ -\/\ 1;}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00245\ \ \ \ \ \}}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_v_dinamico_a6116f41cab791ccfa3fd98c0d78274ec}{tamlog}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ tamlog\_;\ \}}
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_v_dinamico_a8b8bf4b74f134b0ecaeb6cef810b3023}{gettLogico}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ tamlog\_;\ \}}
+\DoxyCodeLine{00257\ \};}
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00259\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
