@@ -91,6 +91,7 @@ public:
      * @param origen el objeto con el que queremos inicializar el nuevo objeto desde una posición inicial 
      * @param posicionInicial la posición desde donde empezamos a copiar en el nuevo objeto
      * @param numElementos el numero de elementos que queremos que haya en el nuevo objeto
+     * @trhow out_of_range el rango que se solicita excede el tamaño del vector origen
      */
     VDinamico(const VDinamico<T>& origen, unsigned int posicionInicial, unsigned int numElementos) 
         : tamlog_(numElementos), tamfis_(1) {
@@ -158,6 +159,7 @@ public:
      * @brief Insertar un elemento en una posición concreta
      * @param dato el dato que queremos insertar
      * @param pos la posición en la que queremos insertar el @param dato
+     * @throw out_of_range la posición de insercion esta fuera de rango
      */
     void insertar(const T& dato, unsigned int pos = UINT_MAX) {
         if (pos != UINT_MAX && pos > tamlog_) {
@@ -182,6 +184,7 @@ public:
      * @brief Eliminar un elemento
      * @param pos posición en la que queremos eliminar el dato
      * @return devuelve el dato borrado
+     * @throw out_of_range si esta vacio o la posición esta fuera de rango
      */
     T borrar(unsigned int pos = UINT_MAX) {
         if (tamlog_ == 0) {
