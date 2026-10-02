@@ -1,6 +1,6 @@
 /**
  * @author Matías Camacho Hoyo mch00039@red.ujaen.es
- * @author 
+ * @author Jose Rivas Ceacero jrc00091@red.ujaen.es
 */
 
 #include <fstream>
